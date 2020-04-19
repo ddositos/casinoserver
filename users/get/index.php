@@ -6,7 +6,7 @@ require_once(ROOT . 'config.php');
 $nickname = filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_STRING);
 $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
 
-if($nickname === null || $token === null || $token !== TOKEN)
+if($nickname === null || $token !== TOKEN)
 	exit(0);
 
 $db = new Database();

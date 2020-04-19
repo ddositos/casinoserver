@@ -42,10 +42,9 @@ class Database{
 		return "True";
 	}
 	function get_top($count = 5){
-		$statement = $this->pdo->prepare("SELECT nickname, balance FROM users ORDER BY balance DESC LIMIT ?");
-		$statement->execute([
-			$count
-		]);
+		$statement = $this->pdo->prepare("SELECT nickname, balance FROM users ORDER BY balance DESC LIMIT :limit");
+		$statement->bindValue(":limit", $count, PDO::PARAM_INT);
+		$statement->execute();
 		$response = "";
 		while($row = $statement->fetch(PDO::FETCH_LAZY)){
 			$response .= $row['nickname'] . ': ' . $row['balance'] . ' эм\n';

@@ -6,7 +6,7 @@ require_once(ROOT . 'config.php');
 
 $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
 
-if($token === null || $token !== TOKEN)
+if($token !== TOKEN)
 	exit("-");
 
 $db = new Database();
