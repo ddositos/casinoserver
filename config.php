@@ -10,7 +10,7 @@ class Database{
 		$this->pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $username, $password);
 	}
 	function user_create($nickname){
-		$statement = $this->pdo->prepare("SELECT FROM users id WHERE nickname = ?");
+		$statement = $this->pdo->prepare("SELECT 1 FROM users WHERE nickname = ? LIMIT 1");
 		$statement->execute($nickname);
 		var_dump($statement->fetch(PDO::FETCH_LAZY));
 	}
