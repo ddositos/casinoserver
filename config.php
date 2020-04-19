@@ -31,14 +31,14 @@ class Database{
 	function user_pay($nickname, $delta){
 		$balance = $this->user_get($nickname);
 		$balance += $delta;
-		if($delta < 0)
+		if($balance < 0)
 			return "False";
 		$statement = $this->pdo->prepare("UPDATE users SET balance = ? WHERE nickname = ?");
 		$statement->execute([
 			$balance,
 			$nickname
 		]);
-		$statement->execute(PDO::FETCH_LAZY);
+		
 		return "True";
 	}
 }
