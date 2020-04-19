@@ -11,7 +11,7 @@ class Database{
 	}
 	function user_create($nickname){
 		$statement = $this->pdo->prepare("SELECT 1 FROM users WHERE nickname = ? LIMIT 1");
-		$statement->execute($nickname);
+		$statement->execute([$nickname]);
 		var_dump($statement->fetch(PDO::FETCH_LAZY));
 	}
 }
