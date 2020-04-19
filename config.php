@@ -41,8 +41,17 @@ class Database{
 		
 		return "True";
 	}
+	function get_top($count = 5){
+		$statement = $this->pdo->prepare("SELECT nickname, balance FROM users ORDER BY balance DESC LIMIT ?");
+		$statement->execute([
+			$count
+		]);
+		$response = "";
+		while($row = $statement->fetch(PDO::FETCH_LAZY)){
+			$response .= $row['nickname'] . ': ' . $row['balance'] . ' эм\n';
+		}
+		return $response;
+	}
 }
-
-
 
 define("TOKEN", "pank228");
