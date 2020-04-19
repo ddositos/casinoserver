@@ -11,4 +11,3 @@ if($nickname === null || $token === null || $delta === null || $token !== TOKEN)
 
 $db = new Database();
 echo $db->user_pay($nickname, $delta);
-echo "True";
