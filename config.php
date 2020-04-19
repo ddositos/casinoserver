@@ -8,4 +8,4 @@ function connect(){
 }
 
 
-
+define("TOKEN", "pank228");
