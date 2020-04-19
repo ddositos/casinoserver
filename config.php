@@ -47,7 +47,7 @@ class Database{
 		$statement->execute();
 		$response = "";
 		while($row = $statement->fetch(PDO::FETCH_LAZY)){
-			$response .= $row['nickname'] . ': ' . $row['balance'] . ' эм\n';
+			$response .= $row['nickname'] . ': ' . $row['balance'] . " эм\n";
 		}
 		return $response;
 	}
