@@ -12,4 +12,3 @@ if($nickname === null || $token === null || $token !== TOKEN)
 $db = new Database();
 echo $db->user_get($nickname);
 
-echo "pidor";
