@@ -34,7 +34,7 @@ class Database{
 		if(!$this->user_exists($nickname)){
 			if($delta < 0)
 				return "False";
-			return user_set($nickname, $delta);
+			return $this->user_set($nickname, $delta);
 		}
 		$balance = $this->user_get($nickname);
 		$balance += $delta;
