@@ -31,6 +31,11 @@ class Database{
 		return ($statement->fetch(PDO::FETCH_LAZY) === false) ? false : true;
 	}
 	function user_pay($nickname, $delta){
+		if(!$this->user_exists($nickname)){
+			if($delta < 0)
+				return "False";
+			return user_set($nickname, $delta);
+		}
 		$balance = $this->user_get($nickname);
 		$balance += $delta;
 		if($balance < 0)
