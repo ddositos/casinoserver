@@ -13,7 +13,9 @@ class Database{
 		if(!$this->user_exists($nickname)){
 			$statement = $this->pdo->prepare("INSERT INTO users (nickname, balance) VALUES (?, 0)");
 			$statement->execute([$nickname]);
+			return "True";
 		}
+		return "False";
 	}
 	function user_get($nickname){
 		$statement = $this->pdo->prepare("SELECT balance FROM users WHERE nickname = ? LIMIT 1");
@@ -54,11 +56,13 @@ class Database{
 			$statement->bindValue("balance", $balance, PDO::PARAM_INT);
 			$statement->execute();
 		}
+		return "True";
 	}
 	function user_delete($nickname){
 		$statement = $this->pdo->prepare("DELETE FROM users WHERE nickname = :nickname");
 		$statement->bindValue(":nickname", $nickname, PDO::PARAM_STR);
 		$statement->execute();
+		return "True";
 	}
 	function get_top($count = 5){
 		$statement = $this->pdo->prepare("SELECT nickname, balance FROM users ORDER BY balance DESC LIMIT :limit");

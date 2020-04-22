@@ -9,7 +9,6 @@ $delta = filter_input(INPUT_POST, 'delta', FILTER_SANITIZE_NUMBER_INT);
 
 if($nickname === null ||  $delta === null || $token !== TOKEN)
 	exit("False");
-echo "$nickname $delta $token";
 
 $db = new Database();
 echo $db->user_pay($nickname, $delta);
