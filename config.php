@@ -39,7 +39,7 @@ class Database{
 			$nickname
 		]);
 		
-		//return "True";
+		return "True";
 	}
 	function user_set($nickname, $balance){
 		if(!$this->user_exists($nickname)){
