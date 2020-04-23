@@ -9,6 +9,11 @@ class Database{
 		$password = '0rUY2FTmY6';
 		$this->pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $username, $password);
 	}
+	function log($line){
+		$file = fopen($_SERVER['DOCUMENT_ROOT'] . "/logs.txt", "a");
+		fwrite($file, $line . "\n");
+		fclose($file);
+	}
 	function user_create($nickname){
 		if(!$this->user_exists($nickname)){
 			$statement = $this->pdo->prepare("INSERT INTO users (nickname, balance) VALUES (?, 0)");
@@ -31,6 +36,7 @@ class Database{
 		return ($statement->fetch(PDO::FETCH_LAZY) === false) ? false : true;
 	}
 	function user_pay($nickname, $delta){
+		$this->log("$nickname pay $delta");
 		if(!$this->user_exists($nickname)){
 			if($delta < 0)
 				return "False";
