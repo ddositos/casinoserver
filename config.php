@@ -3,10 +3,11 @@
 class Database{
 	private $pdo = null;
 	function __construct(){
-		$host = 'remotemysql.com:3306';
-		$db = 'HuV3wK2vrx';
-		$username = 'HuV3wK2vrx';
-		$password = '0rUY2FTmY6';
+		// Данные бд, которые можно найти в коммитах уже не актуальны.
+		$host = 'host';
+		$db = 'table';
+		$username = 'username';
+		$password = 'password';
 		$this->pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $username, $password);
 	}
 	function log($line){
