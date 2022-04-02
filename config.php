@@ -3,7 +3,7 @@
 class Database{
 	private $pdo = null;
 	function __construct(){
-		// Данные бд, которые можно найти в коммитах уже не актуальны.
+		// Данные бд, которые можно найти в коммитах уже, не актуальны.
 		$host = 'host';
 		$db = 'table';
 		$username = 'username';
